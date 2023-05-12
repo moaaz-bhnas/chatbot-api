@@ -1,0 +1,15 @@
+include *.txt
+include *.md
+recursive-include ./chatbot_model/*
+
+include chatbot_model/data/intents.json
+include chatbot_model/data/data.pth
+include chatbot_model/VERSION.txt
+
+
+include ./requirements/requirements.txt
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
