@@ -1,17 +1,22 @@
+from pathlib import Path
+
 import random
 import json
 
 import torch
 
-from model import NeuralNet
-from nltk_utils import bag_of_words, tokenize
+from chatbot_model.model.nn_model import NeuralNet
+from chatbot_model.preproccesing.nltk_utils import bag_of_words, tokenize
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+data_dir = ROOT_DIR/'data'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('intents.json', 'r') as json_data:
+with open(data_dir/'intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
-FILE = "data.pth"
+FILE = data_dir/"data.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
